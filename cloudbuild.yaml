@@ -1,0 +1,12 @@
+steps:
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      [
+        "--cache=true",
+        "--cache-ttl=6h",
+        "--destination=${_IMAGE}"
+      ]
+
+substitutions:
+  _IMAGE: 'europe-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/app:${TAG_NAME:-${SHORT_SHA}}'
+
